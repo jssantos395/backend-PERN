@@ -1,11 +1,8 @@
 import React from 'react'
 
 const RestaurantDetailPage = () => {
-  return
-    <div>
-      RestaurantDetailPage
-    </div>
-  
-}
+  return ( <div>Detail Page</div>
+
+)}
 
 export default RestaurantDetailPage
