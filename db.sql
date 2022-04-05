@@ -24,3 +24,22 @@ CREATE TABLE reviews (
   review TEXT NOT NULL,
   rating INT NOT NULL check(rating >=1 and rating <=5)
 );
+
+
+heroku addons:create heroku-postgresql:hobby-dev --app sleepy-crag-81275
+
+heroku pg:psql postgresql-deep-70025  --app sleepy-crag-81275
+
+CREATE TABLE reviews (
+  id BIGSERIAL NOT NULL PRIMARY KEY,
+  restaurant_id BIGINT REFERENCES restaurants(id) ON DELETE CASCADE,
+  name VARCHAR(50) NOT NULL,
+  review TEXT NOT NULL,
+  rating INT NOT NULL check(
+    rating >= 1
+    AND rating <= 5
+  )
+);
+
+INSERT INTO restaurants(name, location, price_range)
+VALUES ("McDonalds", "New York", 3);

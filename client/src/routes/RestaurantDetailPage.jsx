@@ -2,6 +2,9 @@ import React, {useEffect, useContext} from 'react'
 import { useParams,  useNavigate } from "react-router-dom"
 import {RestaurantsContext} from "../context/RestaurantsContext"
 import RestaurantFinder from "../apis/RestaurantFinder"
+import StarRating from "../components/StarRating"
+import Reviews from "../components/Reviews"
+import AddReview from "../components/AddReview"
 
 const RestaurantDetailPage = () => {
     const {id} = useParams()
@@ -16,9 +19,17 @@ const RestaurantDetailPage = () => {
       }
       fetchData()
     }, [])
+
   return (
     <div>
-      {selectedRestaurant && selectedRestaurant.name}
+      {selectedRestaurant && (
+        <>
+          <div className="mt-3">
+            <Reviews reviews={selectedRestaurant}/>
+            <AddReview/>
+          </div>
+        </>
+      )}
     </div>
   )
 }
